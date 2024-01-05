@@ -32,4 +32,10 @@ export abstract class AbstractRepository<TDocument extends AbstractDocument> {
       lean: true,
     })) as unknown as TDocument;
   }
+
+  async deleteMany(filterQuery: FilterQuery<TDocument>): Promise<TDocument[]> {
+    return (await this.model.deleteMany(filterQuery, {
+      lean: true,
+    })) as unknown as TDocument[];
+  }
 }
