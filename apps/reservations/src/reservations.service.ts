@@ -2,15 +2,16 @@ import { Injectable } from '@nestjs/common';
 import { CreateReservationDto } from './dto/create-reservation.dto';
 import { UpdateReservationDto } from './dto/update-reservation.dto';
 import { ReservationsRepository } from './reservations.repository';
+import { IUser } from '@app/common';
 
 @Injectable()
 export class ReservationsService {
   constructor(private readonly reservationsRepository: ReservationsRepository) {}
 
-  async create(createReservationDto: CreateReservationDto) {
+  async create(user: IUser, createReservationDto: CreateReservationDto) {
     return await this.reservationsRepository.create({
       ...createReservationDto,
-      userId: '',
+      userId: user._id,
     });
   }
 
