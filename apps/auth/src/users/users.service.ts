@@ -17,6 +17,10 @@ export class UsersService {
     return await this.usersRepository.find({});
   }
 
+  async findOne(_id: string) {
+    return await this.usersRepository.findOne({ _id });
+  }
+
   async verifyUser(email: string, password: string) {
     const user = await this.usersRepository.findOne({ email });
     if (!user) throw new NotFoundException();

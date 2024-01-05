@@ -3,13 +3,13 @@ import { Response } from 'express';
 import { UserDocument } from './users/models/user.schema';
 import { JwtService } from '@nestjs/jwt';
 import { ENV } from '@app/common';
+import { ITokenPayload } from './interfaces/token-payload.interface';
 
 @Injectable()
 export class AuthService {
   constructor(private readonly jwtService: JwtService) {}
   async login(user: UserDocument, response: Response) {
-    console.log('user: ', user);
-    const tokenPayload = {
+    const tokenPayload: ITokenPayload = {
       userId: user._id.toString(),
     };
 
