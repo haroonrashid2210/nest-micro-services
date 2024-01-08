@@ -6,6 +6,7 @@ export const ENV = {
   PORT: {
     AUTH: process.env.PORT_AUTH,
     RESERVATION: process.env.PORT_RESERVATION,
+    PAYMENT: process.env.PORT_PAYMENT,
     TCP: process.env.PORT_TCP,
   },
   MONGODB_URI: process.env.MONGODB_URI,
@@ -13,4 +14,5 @@ export const ENV = {
     SECRET: process.env.JWT_SECRET,
     EXPIRATION: process.env.JWT_EXPIRATION,
   },
+  STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
 };

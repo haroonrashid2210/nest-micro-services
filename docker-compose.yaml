@@ -21,6 +21,17 @@ services:
     volumes:
       - .:/usr/src/app
   
+  payments:
+    build:
+      context: .
+      dockerfile: ./apps/payments/Dockerfile
+      target: development
+    command: npm run start:dev payments
+    ports:
+      - '3003:3003'
+    volumes:
+      - .:/usr/src/app
+  
   mongo:
     image: mongo
     ports:
