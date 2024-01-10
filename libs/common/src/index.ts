@@ -4,3 +4,4 @@ export * from './config';
 export * from './auth';
 export * from './decorators';
 export * from './interfaces';
+export * from './dto';

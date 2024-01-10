@@ -13,9 +13,14 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
     DatabaseModule.forFeature([{ name: ReservationDocument.name, schema: ReservationSchema }]),
     ClientsModule.register([
       {
-        name: CONSTANT.AUTH_SERVICE,
+        name: CONSTANT.SERVICE.AUTH,
         transport: Transport.TCP,
         options: { host: CONSTANT.HOST.AUTH, port: Number(ENV.PORT.TCP) },
+      },
+      {
+        name: CONSTANT.SERVICE.PAYMENTS,
+        transport: Transport.TCP,
+        options: { host: CONSTANT.HOST.PAYMENTS, port: Number(ENV.PORT.PAYMENT) },
       },
     ]),
   ],

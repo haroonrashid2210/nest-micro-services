@@ -1,7 +1,6 @@
-import { ENV } from '@app/common';
+import { CreateChargeDto, ENV } from '@app/common';
 import { Injectable } from '@nestjs/common';
 import { Stripe } from 'stripe';
-import { CreateChargeDto } from './dto';
 
 @Injectable()
 export class PaymentsService {

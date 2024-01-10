@@ -5,7 +5,7 @@ import { ClientProxy } from '@nestjs/microservices';
 
 @Injectable()
 export class JwtAuthGuard implements CanActivate {
-  constructor(@Inject(CONSTANT.AUTH_SERVICE) private readonly authClient: ClientProxy) {}
+  constructor(@Inject(CONSTANT.SERVICE.AUTH) private readonly authClient: ClientProxy) {}
 
   canActivate(context: ExecutionContext): boolean | Promise<boolean> | Observable<boolean> {
     const jwt = context.switchToHttp().getRequest().cookies?.Authentication;

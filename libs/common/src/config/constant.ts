@@ -1,7 +1,11 @@
 export const CONSTANT = {
-  AUTH_SERVICE: 'auth',
+  SERVICE: {
+    AUTH: 'auth',
+    PAYMENTS: 'payments',
+  },
   HOST: {
     AUTH: 'auth',
     RESERVATIONS: 'reservations',
+    PAYMENTS: 'payments',
   },
 };
