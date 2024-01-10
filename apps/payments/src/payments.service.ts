@@ -6,10 +6,10 @@ import { Stripe } from 'stripe';
 export class PaymentsService {
   private readonly stripe = new Stripe(ENV.STRIPE_SECRET_KEY);
 
-  async createCharge({ card, amount }: CreateChargeDto) {
+  async createCharge({ amount }: CreateChargeDto) {
     const paymentMethod = await this.stripe.paymentMethods.create({
       type: 'card',
-      card,
+      card: { token: 'tok_visa' },
     });
 
     const paymentIntent = await this.stripe.paymentIntents.create({
