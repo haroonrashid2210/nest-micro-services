@@ -14,13 +14,13 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
     ClientsModule.register([
       {
         name: CONSTANT.SERVICE.AUTH,
-        transport: Transport.TCP,
-        options: { host: CONSTANT.HOST.AUTH, port: Number(ENV.PORT.TCP) },
+        transport: Transport.RMQ,
+        options: { urls: [ENV.RABBITMQ_URI], queue: 'auth' },
       },
       {
         name: CONSTANT.SERVICE.PAYMENTS,
-        transport: Transport.TCP,
-        options: { host: CONSTANT.HOST.PAYMENTS, port: Number(ENV.PORT.PAYMENT) },
+        transport: Transport.RMQ,
+        options: { urls: [ENV.RABBITMQ_URI], queue: 'payments' },
       },
     ]),
   ],
