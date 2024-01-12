@@ -6,13 +6,7 @@ import { Logger } from 'nestjs-pino';
 
 async function bootstrap() {
   const app = await NestFactory.create(NotificationsModule);
-  app.connectMicroservice({
-    transport: Transport.TCP,
-    options: {
-      host: '0.0.0.0',
-      port: ENV.PORT.NOTIFICATION,
-    },
-  });
+  app.connectMicroservice({ transport: Transport.RMQ, options: { urls: [ENV.RABBITMQ_URI], queue: 'notifications' } });
   app.useLogger(app.get(Logger));
   await app.startAllMicroservices();
 }
