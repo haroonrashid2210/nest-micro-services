@@ -8,7 +8,7 @@ import { ENV } from '@app/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AuthModule);
-  app.connectMicroservice({ transport: Transport.TCP, options: { host: '0.0.0.0', port: ENV.PORT.TCP } });
+  app.connectMicroservice({ transport: Transport.RMQ, options: { urls: [ENV.RABBITMQ_URI], queue: 'auth' } });
   app.use(cookieParser());
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
   app.useLogger(app.get(Logger));

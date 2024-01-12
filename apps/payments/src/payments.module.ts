@@ -10,8 +10,8 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
     ClientsModule.register([
       {
         name: CONSTANT.SERVICE.NOTIFICATIONS,
-        transport: Transport.TCP,
-        options: { host: CONSTANT.HOST.NOTIFICATIONS, port: Number(ENV.PORT.NOTIFICATION) },
+        transport: Transport.RMQ,
+        options: { urls: [ENV.RABBITMQ_URI], queue: 'notifications' },
       },
     ]),
   ],
